@@ -3384,6 +3384,15 @@
         "hash": "sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA=="
       }
     },
+    "npm:@microsoft/tsdoc": {
+      "type": "npm",
+      "name": "npm:@microsoft/tsdoc",
+      "data": {
+        "version": "0.16.0",
+        "packageName": "@microsoft/tsdoc",
+        "hash": "sha512-xgAyonlVVS+q7Vc7qLW0UrJU7rSFcETRWsqdXZtjzRU8dF+6CkozTK4V4y1LwOX7j8r/vHphjDeMeGI4tNGeGA=="
+      }
+    },
     "npm:@modern-js/node-bundle-require": {
       "type": "npm",
       "name": "npm:@modern-js/node-bundle-require",
@@ -3852,6 +3861,15 @@
         "hash": "sha512-RA1GjUVMnvYFxuqovrEqZoxxW5NUZqbwKtYz/Tt7nXerk0LbLblQmrsgdeOxV5SFHf0UDggjS/bSeOZwt1pmEQ=="
       }
     },
+    "npm:@nestjs/mapped-types": {
+      "type": "npm",
+      "name": "npm:@nestjs/mapped-types",
+      "data": {
+        "version": "2.1.0",
+        "packageName": "@nestjs/mapped-types",
+        "hash": "sha512-W+n+rM69XsFdwORF11UqJahn4J3xi4g/ZEOlJNL6KoW5ygWSmBB2p0S2BZ4FQeS/NDH72e6xIcu35SfJnE8bXw=="
+      }
+    },
     "npm:@nestjs/platform-express": {
       "type": "npm",
       "name": "npm:@nestjs/platform-express",
@@ -4210,6 +4228,15 @@
         "version": "11.0.9",
         "packageName": "@nestjs/schematics",
         "hash": "sha512-0NfPbPlEaGwIT8/TCThxLzrlz3yzDNkfRNpbL7FiplKq3w4qXpJg0JYwqgMEJnLQZm3L/L/5XjoyfJHUO3qX9g=="
+      }
+    },
+    "npm:@nestjs/swagger": {
+      "type": "npm",
+      "name": "npm:@nestjs/swagger",
+      "data": {
+        "version": "11.2.3",
+        "packageName": "@nestjs/swagger",
+        "hash": "sha512-a0xFfjeqk69uHIUpP8u0ryn4cKuHdra2Ug96L858i0N200Hxho+n3j+TlQXyOF4EstLSGjTfxI1Xb2E1lUxeNg=="
       }
     },
     "npm:@nestjs/testing": {
@@ -5101,6 +5128,15 @@
         "version": "1.1.0",
         "packageName": "@rtsao/scc",
         "hash": "sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g=="
+      }
+    },
+    "npm:@scarf/scarf": {
+      "type": "npm",
+      "name": "npm:@scarf/scarf",
+      "data": {
+        "version": "1.4.0",
+        "packageName": "@scarf/scarf",
+        "hash": "sha512-xxeapPiUXdZAE3che6f3xogoJPeZgig6omHEy1rIY5WVsB3H2BHNnZH+gHG6x91SCWyQCzWGsuL2Hh3ClO5/qQ=="
       }
     },
     "npm:@sinclair/typebox": {
@@ -14886,6 +14922,24 @@
         "hash": "sha512-e4hG1hRwoOdRb37cIMSgzNsxyzKfayW6VOflrwvR+/bzrkyxY/31WkbgnQpgtrNp1SdpJvpUAGTa/ZoiPNDuRQ=="
       }
     },
+    "npm:swagger-ui-dist": {
+      "type": "npm",
+      "name": "npm:swagger-ui-dist",
+      "data": {
+        "version": "5.30.2",
+        "packageName": "swagger-ui-dist",
+        "hash": "sha512-HWCg1DTNE/Nmapt+0m2EPXFwNKNeKK4PwMjkwveN/zn1cV2Kxi9SURd+m0SpdcSgWEK/O64sf8bzXdtUhigtHA=="
+      }
+    },
+    "npm:swagger-ui-express": {
+      "type": "npm",
+      "name": "npm:swagger-ui-express",
+      "data": {
+        "version": "5.0.1",
+        "packageName": "swagger-ui-express",
+        "hash": "sha512-SrNU3RiBGTLLmFU8GIJdOdanJTl4TOmT27tt3bWWHppqYmAZ6IDuEuBvMU6nZq0zLEe6b/1rACXCgLZqO6ZfrA=="
+      }
+    },
     "npm:symbol-tree": {
       "type": "npm",
       "name": "npm:symbol-tree",
@@ -15931,6 +15985,11 @@
       {
         "source": "api",
         "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "api",
+        "target": "npm:@nestjs/swagger",
         "type": "static"
       },
       {
@@ -20424,6 +20483,18 @@
         "type": "static"
       }
     ],
+    "npm:@nestjs/mapped-types": [
+      {
+        "source": "npm:@nestjs/mapped-types",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/mapped-types",
+        "target": "npm:reflect-metadata",
+        "type": "static"
+      }
+    ],
     "npm:@nestjs/platform-express": [
       {
         "source": "npm:@nestjs/platform-express",
@@ -20857,6 +20928,53 @@
       {
         "source": "npm:@nestjs/schematics",
         "target": "npm:pluralize",
+        "type": "static"
+      }
+    ],
+    "npm:@nestjs/swagger": [
+      {
+        "source": "npm:@nestjs/swagger",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/swagger",
+        "target": "npm:@nestjs/core",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/swagger",
+        "target": "npm:reflect-metadata",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/swagger",
+        "target": "npm:@microsoft/tsdoc",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/swagger",
+        "target": "npm:@nestjs/mapped-types",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/swagger",
+        "target": "npm:js-yaml@4.1.1",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/swagger",
+        "target": "npm:lodash",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/swagger",
+        "target": "npm:path-to-regexp@8.3.0",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/swagger",
+        "target": "npm:swagger-ui-dist",
         "type": "static"
       }
     ],
@@ -35224,6 +35342,25 @@
         "type": "static"
       }
     ],
+    "npm:swagger-ui-dist": [
+      {
+        "source": "npm:swagger-ui-dist",
+        "target": "npm:@scarf/scarf",
+        "type": "static"
+      }
+    ],
+    "npm:swagger-ui-express": [
+      {
+        "source": "npm:swagger-ui-express",
+        "target": "npm:express",
+        "type": "static"
+      },
+      {
+        "source": "npm:swagger-ui-express",
+        "target": "npm:swagger-ui-dist",
+        "type": "static"
+      }
+    ],
     "npm:sync-child-process": [
       {
         "source": "npm:sync-child-process",
@@ -37161,5 +37298,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1763485684618
+  "computedAt": 1763487681196
 }

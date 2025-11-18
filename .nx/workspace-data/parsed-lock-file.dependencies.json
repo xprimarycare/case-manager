@@ -4085,6 +4085,16 @@
     "type": "static"
   },
   {
+    "source": "npm:@nestjs/mapped-types",
+    "target": "npm:@nestjs/common",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nestjs/mapped-types",
+    "target": "npm:reflect-metadata",
+    "type": "static"
+  },
+  {
     "source": "npm:@nestjs/platform-express",
     "target": "npm:@nestjs/common",
     "type": "static"
@@ -4492,6 +4502,56 @@
   {
     "source": "npm:@nestjs/schematics",
     "target": "npm:pluralize",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nestjs/swagger",
+    "target": "npm:@nestjs/common",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nestjs/swagger",
+    "target": "npm:@nestjs/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nestjs/swagger",
+    "target": "npm:reflect-metadata",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nestjs/swagger",
+    "target": "npm:@microsoft/tsdoc",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nestjs/swagger",
+    "target": "npm:@nestjs/mapped-types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nestjs/swagger",
+    "target": "npm:js-yaml@4.1.1",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nestjs/swagger",
+    "target": "npm:lodash",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nestjs/swagger",
+    "target": "npm:path-to-regexp@8.3.0",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nestjs/swagger",
+    "target": "npm:swagger-ui-dist",
+    "type": "static"
+  },
+  {
+    "source": "npm:js-yaml@4.1.1",
+    "target": "npm:argparse",
     "type": "static"
   },
   {
@@ -18112,6 +18172,21 @@
   {
     "source": "npm:svgo",
     "target": "npm:picocolors",
+    "type": "static"
+  },
+  {
+    "source": "npm:swagger-ui-dist",
+    "target": "npm:@scarf/scarf",
+    "type": "static"
+  },
+  {
+    "source": "npm:swagger-ui-express",
+    "target": "npm:express",
+    "type": "static"
+  },
+  {
+    "source": "npm:swagger-ui-express",
+    "target": "npm:swagger-ui-dist",
     "type": "static"
   },
   {

@@ -2763,6 +2763,15 @@
         "hash": "sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA=="
       }
     },
+    "npm:@microsoft/tsdoc": {
+      "type": "npm",
+      "name": "npm:@microsoft/tsdoc",
+      "data": {
+        "version": "0.16.0",
+        "packageName": "@microsoft/tsdoc",
+        "hash": "sha512-xgAyonlVVS+q7Vc7qLW0UrJU7rSFcETRWsqdXZtjzRU8dF+6CkozTK4V4y1LwOX7j8r/vHphjDeMeGI4tNGeGA=="
+      }
+    },
     "npm:@modern-js/node-bundle-require": {
       "type": "npm",
       "name": "npm:@modern-js/node-bundle-require",
@@ -3231,6 +3240,15 @@
         "hash": "sha512-RA1GjUVMnvYFxuqovrEqZoxxW5NUZqbwKtYz/Tt7nXerk0LbLblQmrsgdeOxV5SFHf0UDggjS/bSeOZwt1pmEQ=="
       }
     },
+    "npm:@nestjs/mapped-types": {
+      "type": "npm",
+      "name": "npm:@nestjs/mapped-types",
+      "data": {
+        "version": "2.1.0",
+        "packageName": "@nestjs/mapped-types",
+        "hash": "sha512-W+n+rM69XsFdwORF11UqJahn4J3xi4g/ZEOlJNL6KoW5ygWSmBB2p0S2BZ4FQeS/NDH72e6xIcu35SfJnE8bXw=="
+      }
+    },
     "npm:@nestjs/platform-express": {
       "type": "npm",
       "name": "npm:@nestjs/platform-express",
@@ -3589,6 +3607,15 @@
         "version": "11.0.9",
         "packageName": "@nestjs/schematics",
         "hash": "sha512-0NfPbPlEaGwIT8/TCThxLzrlz3yzDNkfRNpbL7FiplKq3w4qXpJg0JYwqgMEJnLQZm3L/L/5XjoyfJHUO3qX9g=="
+      }
+    },
+    "npm:@nestjs/swagger": {
+      "type": "npm",
+      "name": "npm:@nestjs/swagger",
+      "data": {
+        "version": "11.2.3",
+        "packageName": "@nestjs/swagger",
+        "hash": "sha512-a0xFfjeqk69uHIUpP8u0ryn4cKuHdra2Ug96L858i0N200Hxho+n3j+TlQXyOF4EstLSGjTfxI1Xb2E1lUxeNg=="
       }
     },
     "npm:@nestjs/testing": {
@@ -4480,6 +4507,15 @@
         "version": "1.1.0",
         "packageName": "@rtsao/scc",
         "hash": "sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g=="
+      }
+    },
+    "npm:@scarf/scarf": {
+      "type": "npm",
+      "name": "npm:@scarf/scarf",
+      "data": {
+        "version": "1.4.0",
+        "packageName": "@scarf/scarf",
+        "hash": "sha512-xxeapPiUXdZAE3che6f3xogoJPeZgig6omHEy1rIY5WVsB3H2BHNnZH+gHG6x91SCWyQCzWGsuL2Hh3ClO5/qQ=="
       }
     },
     "npm:@sinclair/typebox": {
@@ -14265,6 +14301,24 @@
         "hash": "sha512-e4hG1hRwoOdRb37cIMSgzNsxyzKfayW6VOflrwvR+/bzrkyxY/31WkbgnQpgtrNp1SdpJvpUAGTa/ZoiPNDuRQ=="
       }
     },
+    "npm:swagger-ui-dist": {
+      "type": "npm",
+      "name": "npm:swagger-ui-dist",
+      "data": {
+        "version": "5.30.2",
+        "packageName": "swagger-ui-dist",
+        "hash": "sha512-HWCg1DTNE/Nmapt+0m2EPXFwNKNeKK4PwMjkwveN/zn1cV2Kxi9SURd+m0SpdcSgWEK/O64sf8bzXdtUhigtHA=="
+      }
+    },
+    "npm:swagger-ui-express": {
+      "type": "npm",
+      "name": "npm:swagger-ui-express",
+      "data": {
+        "version": "5.0.1",
+        "packageName": "swagger-ui-express",
+        "hash": "sha512-SrNU3RiBGTLLmFU8GIJdOdanJTl4TOmT27tt3bWWHppqYmAZ6IDuEuBvMU6nZq0zLEe6b/1rACXCgLZqO6ZfrA=="
+      }
+    },
     "npm:symbol-tree": {
       "type": "npm",
       "name": "npm:symbol-tree",
@@ -15529,6 +15583,7 @@
     "node_modules/@jsonjoy.com/util": "npm:@jsonjoy.com/util",
     "node_modules/@leichtgewicht/ip-codec": "npm:@leichtgewicht/ip-codec",
     "node_modules/@lukeed/csprng": "npm:@lukeed/csprng",
+    "node_modules/@microsoft/tsdoc": "npm:@microsoft/tsdoc",
     "node_modules/@modern-js/node-bundle-require": "npm:@modern-js/node-bundle-require",
     "node_modules/@modern-js/node-bundle-require/node_modules/@esbuild/aix-ppc64": "npm:@esbuild/aix-ppc64@0.25.5",
     "node_modules/@modern-js/node-bundle-require/node_modules/@esbuild/android-arm": "npm:@esbuild/android-arm@0.25.5",
@@ -15602,6 +15657,7 @@
     "node_modules/@nestjs/common/node_modules/file-type": "npm:file-type@21.1.0",
     "node_modules/@nestjs/core": "npm:@nestjs/core",
     "node_modules/@nestjs/core/node_modules/path-to-regexp": "npm:path-to-regexp@8.3.0",
+    "node_modules/@nestjs/mapped-types": "npm:@nestjs/mapped-types",
     "node_modules/@nestjs/platform-express": "npm:@nestjs/platform-express",
     "node_modules/@nestjs/platform-express/node_modules/accepts": "npm:accepts@2.0.0",
     "node_modules/@nestjs/platform-express/node_modules/body-parser": "npm:body-parser@2.2.0",
@@ -15624,6 +15680,9 @@
     "node_modules/@nestjs/platform-express/node_modules/type-is": "npm:type-is@2.0.1",
     "node_modules/@nestjs/schematics": "npm:@nestjs/schematics",
     "node_modules/@nestjs/schematics/node_modules/jsonc-parser": "npm:jsonc-parser@3.3.1",
+    "node_modules/@nestjs/swagger": "npm:@nestjs/swagger",
+    "node_modules/@nestjs/swagger/node_modules/js-yaml": "npm:js-yaml@4.1.1",
+    "node_modules/@nestjs/swagger/node_modules/path-to-regexp": "npm:path-to-regexp@8.3.0",
     "node_modules/@nestjs/testing": "npm:@nestjs/testing",
     "node_modules/@nodelib/fs.scandir": "npm:@nodelib/fs.scandir",
     "node_modules/@nodelib/fs.stat": "npm:@nodelib/fs.stat",
@@ -15725,6 +15784,7 @@
     "node_modules/@rspack/core": "npm:@rspack/core",
     "node_modules/@rspack/lite-tapable": "npm:@rspack/lite-tapable",
     "node_modules/@rtsao/scc": "npm:@rtsao/scc",
+    "node_modules/@scarf/scarf": "npm:@scarf/scarf",
     "node_modules/@sinclair/typebox": "npm:@sinclair/typebox",
     "node_modules/@sindresorhus/is": "npm:@sindresorhus/is",
     "node_modules/@sinonjs/commons": "npm:@sinonjs/commons",
@@ -16959,6 +17019,8 @@
     "node_modules/svg-parser": "npm:svg-parser",
     "node_modules/svgo": "npm:svgo",
     "node_modules/svgo/node_modules/commander": "npm:commander@7.2.0",
+    "node_modules/swagger-ui-dist": "npm:swagger-ui-dist",
+    "node_modules/swagger-ui-express": "npm:swagger-ui-express",
     "node_modules/symbol-tree": "npm:symbol-tree",
     "node_modules/sync-child-process": "npm:sync-child-process",
     "node_modules/sync-message-port": "npm:sync-message-port",

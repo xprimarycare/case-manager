@@ -44,12 +44,8 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "dist/api/assets/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": ".vscode/launch.json",
-        "hash": "15397966137827068168"
+        "file": ".gitignore",
+        "hash": "17095317791319527206"
       },
       {
         "file": ".prettierignore",
@@ -58,38 +54,6 @@
       {
         "file": ".prettierrc",
         "hash": "16267754514737964994"
-      },
-      {
-        "file": "dist/api/package-lock.json",
-        "hash": "13200083355862886729"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "11900229695057693808"
-      },
-      {
-        "file": "package.json",
-        "hash": "15516496847337795639"
-      },
-      {
-        "file": "dist/api/package.json",
-        "hash": "4744358325365743302"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
-      },
-      {
-        "file": "package-lock.json",
-        "hash": "3799092326408874867"
-      },
-      {
-        "file": "dist/api/main.js.map",
-        "hash": "3718081646724870893"
-      },
-      {
-        "file": "nx.json",
-        "hash": "18389359855317048764"
       },
       {
         "file": "AGENTS.md",
@@ -104,103 +68,35 @@
         "hash": "8944620160701465"
       },
       {
+        "file": "jest.config.ts",
+        "hash": "6870352021923392442"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "nx.json",
+        "hash": "18389359855317048764"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "31169090793257983"
+      },
+      {
+        "file": "package.json",
+        "hash": "4496447079598010353"
+      },
+      {
         "file": "tsconfig.base.json",
         "hash": "16936441711144470533"
       },
       {
         "file": "vitest.workspace.ts",
         "hash": "4665328684042819579"
-      },
-      {
-        "file": "dist/api/main.js",
-        "hash": "12836148273045857981"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "6870352021923392442"
       }
     ],
     "projectFileMap": {
-      "api": [
-        {
-          "file": "api/eslint.config.mjs",
-          "hash": "9036454466467975933"
-        },
-        {
-          "file": "api/jest.config.cts",
-          "hash": "5384018571856810310"
-        },
-        {
-          "file": "api/project.json",
-          "hash": "14507723075111113963"
-        },
-        {
-          "file": "api/src/app/app.controller.spec.ts",
-          "hash": "7647647754668916054",
-          "deps": [
-            "npm:@nestjs/testing"
-          ]
-        },
-        {
-          "file": "api/src/app/app.controller.ts",
-          "hash": "15276891910009544695",
-          "deps": [
-            "npm:@nestjs/common"
-          ]
-        },
-        {
-          "file": "api/src/app/app.module.ts",
-          "hash": "11673476679848632172",
-          "deps": [
-            "npm:@nestjs/common"
-          ]
-        },
-        {
-          "file": "api/src/app/app.service.spec.ts",
-          "hash": "13111976464657524091",
-          "deps": [
-            "npm:@nestjs/testing"
-          ]
-        },
-        {
-          "file": "api/src/app/app.service.ts",
-          "hash": "9967902337593410053",
-          "deps": [
-            "npm:@nestjs/common"
-          ]
-        },
-        {
-          "file": "api/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "api/src/main.ts",
-          "hash": "150780270862474464",
-          "deps": [
-            "npm:@nestjs/common",
-            "npm:@nestjs/core"
-          ]
-        },
-        {
-          "file": "api/tsconfig.app.json",
-          "hash": "219607765038343262"
-        },
-        {
-          "file": "api/tsconfig.json",
-          "hash": "9420862676426701392"
-        },
-        {
-          "file": "api/tsconfig.spec.json",
-          "hash": "16514264766063949355"
-        },
-        {
-          "file": "api/webpack.config.js",
-          "hash": "14149890755797198700",
-          "deps": [
-            "npm:@nx/webpack"
-          ]
-        }
-      ],
       "web": [
         {
           "file": "web/eslint.config.mjs",
@@ -327,8 +223,89 @@
           "file": "api-e2e/tsconfig.spec.json",
           "hash": "14226830188665428950"
         }
+      ],
+      "api": [
+        {
+          "file": "api/eslint.config.mjs",
+          "hash": "9036454466467975933"
+        },
+        {
+          "file": "api/jest.config.cts",
+          "hash": "5384018571856810310"
+        },
+        {
+          "file": "api/project.json",
+          "hash": "14507723075111113963"
+        },
+        {
+          "file": "api/src/app/app.controller.spec.ts",
+          "hash": "7647647754668916054",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "api/src/app/app.controller.ts",
+          "hash": "15276891910009544695",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "api/src/app/app.module.ts",
+          "hash": "11673476679848632172",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "api/src/app/app.service.spec.ts",
+          "hash": "13111976464657524091",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "api/src/app/app.service.ts",
+          "hash": "9967902337593410053",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "api/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "api/src/main.ts",
+          "hash": "2291709712287985752",
+          "deps": [
+            "npm:@nestjs/swagger",
+            "npm:@nestjs/common",
+            "npm:@nestjs/core"
+          ]
+        },
+        {
+          "file": "api/tsconfig.app.json",
+          "hash": "219607765038343262"
+        },
+        {
+          "file": "api/tsconfig.json",
+          "hash": "9420862676426701392"
+        },
+        {
+          "file": "api/tsconfig.spec.json",
+          "hash": "16514264766063949355"
+        },
+        {
+          "file": "api/webpack.config.js",
+          "hash": "14149890755797198700",
+          "deps": [
+            "npm:@nx/webpack"
+          ]
+        }
       ]
     }
   },
-  "externalNodesHash": "6371490830359351814"
+  "externalNodesHash": "10756662484667341323"
 }
