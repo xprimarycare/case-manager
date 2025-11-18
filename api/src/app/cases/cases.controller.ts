@@ -21,6 +21,11 @@ export class CasesController {
     return this.casesService.findAll();
   }
 
+  @Get(':id')
+  findOne(@Param('id') id: string): CaseDto {
+    return this.casesService.findOne(id);
+  }
+
   @Post()
   create(@Body() createCaseDto: CreateCaseDto) {
     return this.casesService.create(createCaseDto);
