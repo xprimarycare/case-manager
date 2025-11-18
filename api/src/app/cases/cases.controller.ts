@@ -43,7 +43,7 @@ export class CasesController {
   }
 
   @ApiCreatedResponse({
-    type: CreateCaseDto,
+    type: CaseDto,
     description: 'Case created successfully',
   })
   @ApiBadRequestResponse({ description: 'Invalid input' })
@@ -53,7 +53,7 @@ export class CasesController {
   }
 
   @ApiOkResponse({
-    type: UpdateCaseDto,
+    type: CaseDto,
     description: 'Case updated successfully',
   })
   @ApiNotFoundResponse({ description: 'Case not found' })
