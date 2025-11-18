@@ -44,24 +44,24 @@
   "fileMap": {
     "nonProjectFiles": [
       {
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "package.json",
+        "hash": "4496447079598010353"
+      },
+      {
         "file": "package-lock.json",
         "hash": "31169090793257983"
       },
       {
-        "file": "LICENSE",
-        "hash": "2961183620580210055"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "11323305336865625345"
-      },
-      {
-        "file": "eslint.config.mjs",
-        "hash": "8944620160701465"
-      },
-      {
-        "file": "nx.json",
-        "hash": "18389359855317048764"
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
       },
       {
         "file": "tsconfig.base.json",
@@ -72,28 +72,28 @@
         "hash": "7853241679760809325"
       },
       {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
+        "file": "LICENSE",
+        "hash": "2961183620580210055"
       },
       {
         "file": "jest.config.ts",
         "hash": "6870352021923392442"
       },
       {
-        "file": ".prettierignore",
-        "hash": "14688272390704683536"
+        "file": "nx.json",
+        "hash": "18389359855317048764"
       },
       {
         "file": "vitest.workspace.ts",
         "hash": "4665328684042819579"
       },
       {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
+        "file": ".gitignore",
+        "hash": "11323305336865625345"
       },
       {
-        "file": "package.json",
-        "hash": "4496447079598010353"
+        "file": "eslint.config.mjs",
+        "hash": "8944620160701465"
       }
     ],
     "projectFileMap": {
@@ -253,7 +253,7 @@
         },
         {
           "file": "api/src/app/app.module.ts",
-          "hash": "18070866660708207410",
+          "hash": "9234769038025037955",
           "deps": [
             "npm:@nestjs/common"
           ]
@@ -288,7 +288,21 @@
         },
         {
           "file": "api/src/app/cases/cases.controller.ts",
-          "hash": "15314983481443173954",
+          "hash": "2369564432352179630",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "api/src/app/cases/cases.service.spec.ts",
+          "hash": "9362252470763018108",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "api/src/app/cases/cases.service.ts",
+          "hash": "12426223605721274747",
           "deps": [
             "npm:@nestjs/common"
           ]

@@ -10,42 +10,29 @@ import {
 import { CaseDto } from './dto/case.dto';
 import { CreateCaseDto } from './dto/create-case.dto';
 import { UpdateCaseDto } from './dto/update-case.dto';
+import { CasesService } from './cases.service';
 
 @Controller('cases')
 export class CasesController {
+  constructor(private readonly casesService: CasesService) {}
+
   @Get()
   findAll(): CaseDto[] {
-    return [
-      {
-        id: '1',
-        title: 'Test Case',
-        patientName: 'John Doe',
-        summary: 'A sample case for testing.',
-      },
-    ];
+    return this.casesService.findAll();
   }
 
   @Post()
   create(@Body() createCaseDto: CreateCaseDto) {
-    return {
-      id: 'generated-id-123',
-      ...createCaseDto,
-    };
+    return this.casesService.create(createCaseDto);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCaseDto: UpdateCaseDto) {
-    return {
-      id,
-      ...updateCaseDto,
-    };
+    return this.casesService.update(id, updateCaseDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return {
-      deleted: true,
-      id,
-    };
+    return this.casesService.remove(id);
   }
 }
