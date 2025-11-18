@@ -14,6 +14,7 @@ async function bootstrap() {
     .setTitle('Case Management API')
     .setDescription('Documentation for the case management API')
     .setVersion('1.0')
+    .addServer('/api')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

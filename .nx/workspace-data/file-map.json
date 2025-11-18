@@ -44,12 +44,40 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".gitignore",
-        "hash": "17095317791319527206"
+        "file": "package.json",
+        "hash": "4496447079598010353"
       },
       {
-        "file": ".prettierignore",
-        "hash": "14688272390704683536"
+        "file": "vitest.workspace.ts",
+        "hash": "4665328684042819579"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "16936441711144470533"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "6870352021923392442"
+      },
+      {
+        "file": "eslint.config.mjs",
+        "hash": "8944620160701465"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "11323305336865625345"
+      },
+      {
+        "file": "nx.json",
+        "hash": "18389359855317048764"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "2961183620580210055"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "31169090793257983"
       },
       {
         "file": ".prettierrc",
@@ -60,40 +88,12 @@
         "hash": "7853241679760809325"
       },
       {
-        "file": "LICENSE",
-        "hash": "2961183620580210055"
-      },
-      {
-        "file": "eslint.config.mjs",
-        "hash": "8944620160701465"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "6870352021923392442"
-      },
-      {
         "file": "jest.preset.js",
         "hash": "9430166341120122740"
       },
       {
-        "file": "nx.json",
-        "hash": "18389359855317048764"
-      },
-      {
-        "file": "package-lock.json",
-        "hash": "31169090793257983"
-      },
-      {
-        "file": "package.json",
-        "hash": "4496447079598010353"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "16936441711144470533"
-      },
-      {
-        "file": "vitest.workspace.ts",
-        "hash": "4665328684042819579"
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
       }
     ],
     "projectFileMap": {
@@ -253,7 +253,7 @@
         },
         {
           "file": "api/src/app/app.module.ts",
-          "hash": "11673476679848632172",
+          "hash": "18070866660708207410",
           "deps": [
             "npm:@nestjs/common"
           ]
@@ -273,12 +273,33 @@
           ]
         },
         {
+          "file": "api/src/app/cases.module.ts",
+          "hash": "6705203828690906641",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "api/src/app/cases/cases.controller.spec.ts",
+          "hash": "7287910976824991688",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "api/src/app/cases/cases.controller.ts",
+          "hash": "3687259459556306864",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
           "file": "api/src/assets/.gitkeep",
           "hash": "3244421341483603138"
         },
         {
           "file": "api/src/main.ts",
-          "hash": "2291709712287985752",
+          "hash": "9101016755065161242",
           "deps": [
             "npm:@nestjs/swagger",
             "npm:@nestjs/common",
