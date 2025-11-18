@@ -285,5 +285,743 @@
         ]
       }
     }
+  },
+  "10017314900868913827": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "6555501433351522153": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "5222665011284281800": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "5505028496334755704": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "7429502079923045929": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "8331618569512712177": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "4447316018804589486": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "9751606401723603367": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "16972934055613645376": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "5285621654117191388": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "6007829016744505597": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "8124671496127263432": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "16138016684918711519": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "2916511131867252449": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "2352074362139961446": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "9378313175783272525": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "1603000388069864674": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
+  },
+  "16551554904078128631": {
+    "targets": {
+      "test": {
+        "command": "jest",
+        "options": {
+          "cwd": "api",
+          "env": {
+            "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+          }
+        },
+        "metadata": {
+          "technologies": [
+            "jest"
+          ],
+          "description": "Run Jest Tests",
+          "help": {
+            "command": "npx jest --help",
+            "example": {
+              "options": {
+                "coverage": true
+              }
+            }
+          }
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          "{workspaceRoot}/jest.preset.js",
+          {
+            "externalDependencies": [
+              "jest"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/coverage/api"
+        ]
+      }
+    }
   }
 }

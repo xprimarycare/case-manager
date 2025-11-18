@@ -44,56 +44,56 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "package.json",
-        "hash": "4496447079598010353"
-      },
-      {
-        "file": "vitest.workspace.ts",
-        "hash": "4665328684042819579"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "16936441711144470533"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "6870352021923392442"
-      },
-      {
-        "file": "eslint.config.mjs",
-        "hash": "8944620160701465"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "11323305336865625345"
-      },
-      {
-        "file": "nx.json",
-        "hash": "18389359855317048764"
+        "file": "package-lock.json",
+        "hash": "31169090793257983"
       },
       {
         "file": "LICENSE",
         "hash": "2961183620580210055"
       },
       {
-        "file": "package-lock.json",
-        "hash": "31169090793257983"
+        "file": ".gitignore",
+        "hash": "11323305336865625345"
       },
       {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
+        "file": "eslint.config.mjs",
+        "hash": "8944620160701465"
+      },
+      {
+        "file": "nx.json",
+        "hash": "18389359855317048764"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "16936441711144470533"
       },
       {
         "file": "AGENTS.md",
         "hash": "7853241679760809325"
       },
       {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "6870352021923392442"
       },
       {
         "file": ".prettierignore",
         "hash": "14688272390704683536"
+      },
+      {
+        "file": "vitest.workspace.ts",
+        "hash": "4665328684042819579"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "package.json",
+        "hash": "4496447079598010353"
       }
     ],
     "projectFileMap": {
@@ -288,10 +288,22 @@
         },
         {
           "file": "api/src/app/cases/cases.controller.ts",
-          "hash": "3687259459556306864",
+          "hash": "15314983481443173954",
           "deps": [
             "npm:@nestjs/common"
           ]
+        },
+        {
+          "file": "api/src/app/cases/dto/case.dto.ts",
+          "hash": "12091489092388005177"
+        },
+        {
+          "file": "api/src/app/cases/dto/create-case.dto.ts",
+          "hash": "5616567952497341758"
+        },
+        {
+          "file": "api/src/app/cases/dto/update-case.dto.ts",
+          "hash": "6730685635650209434"
         },
         {
           "file": "api/src/assets/.gitkeep",
