@@ -12,6 +12,7 @@ import { CreateCaseDto } from './dto/create-case.dto';
 import { UpdateCaseDto } from './dto/update-case.dto';
 import { CasesService } from './cases.service';
 import {
+  ApiBadRequestResponse,
   ApiCreatedResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
@@ -45,6 +46,7 @@ export class CasesController {
     type: CreateCaseDto,
     description: 'Case created successfully',
   })
+  @ApiBadRequestResponse({ description: 'Invalid input' })
   @Post()
   create(@Body() createCaseDto: CreateCaseDto) {
     return this.casesService.create(createCaseDto);
