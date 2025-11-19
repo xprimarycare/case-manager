@@ -28,8 +28,8 @@ export class CasesController {
     description: 'Cases retrieved successfully',
   })
   @Get()
-  findAll(): CaseDto[] {
-    return this.casesService.findAll();
+  async findAll(): Promise<CaseDto[]> {
+    return await this.casesService.findAll();
   }
 
   @ApiOkResponse({
@@ -38,8 +38,8 @@ export class CasesController {
   })
   @ApiNotFoundResponse({ description: 'Case not found' })
   @Get(':id')
-  findOne(@Param('id') id: string): CaseDto {
-    return this.casesService.findOne(id);
+  async findOne(@Param('id') id: string): Promise<CaseDto> {
+    return await this.casesService.findOne(id);
   }
 
   @ApiCreatedResponse({
@@ -48,8 +48,8 @@ export class CasesController {
   })
   @ApiBadRequestResponse({ description: 'Invalid input' })
   @Post()
-  create(@Body() createCaseDto: CreateCaseDto) {
-    return this.casesService.create(createCaseDto);
+  async create(@Body() createCaseDto: CreateCaseDto): Promise<CaseDto> {
+    return await this.casesService.create(createCaseDto);
   }
 
   @ApiOkResponse({
@@ -58,8 +58,11 @@ export class CasesController {
   })
   @ApiNotFoundResponse({ description: 'Case not found' })
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCaseDto: UpdateCaseDto) {
-    return this.casesService.update(id, updateCaseDto);
+  async update(
+    @Param('id') id: string,
+    @Body() updateCaseDto: UpdateCaseDto
+  ): Promise<CaseDto> {
+    return await this.casesService.update(id, updateCaseDto);
   }
 
   @ApiOkResponse({
@@ -74,7 +77,10 @@ export class CasesController {
   })
   @ApiNotFoundResponse({ description: 'Case not found' })
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.casesService.remove(id);
+  async remove(
+    @Param('id') id: string
+  ): Promise<{ deleted: boolean; id: string }> {
+    const result = await this.casesService.remove(id);
+    return { deleted: true, id: result.id };
   }
 }

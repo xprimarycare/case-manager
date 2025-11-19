@@ -1,55 +1,57 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateCaseDto } from './dto/create-case.dto';
 import { UpdateCaseDto } from './dto/update-case.dto';
+import { PrismaService } from '../prisma.service';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 @Injectable()
 export class CasesService {
-  private cases = [
-    {
-      id: '1',
-      title: 'Test Case',
-      patientName: 'John Doe',
-      summary: 'A sample case for testing.',
-    },
-  ];
+  constructor(private readonly prisma: PrismaService) {}
 
-  findAll() {
-    return this.cases;
+  async findAll() {
+    const results = await this.prisma.case.findMany();
+    return results;
   }
 
-  findOne(id: string) {
-    const caseItem = this.cases.find((c) => c.id === id);
+  async findOne(id: string) {
+    const caseItem = await this.prisma.case.findUnique({ where: { id } });
     if (!caseItem) throw new NotFoundException(`Case with id ${id} not found`);
     return caseItem;
   }
 
-  create(createCaseDto: CreateCaseDto) {
-    const newCase = {
-      id: crypto.randomUUID(),
-      ...createCaseDto,
-    };
-
-    this.cases.push(newCase);
-    return newCase;
+  async create(createCaseDto: CreateCaseDto) {
+    const result = await this.prisma.case.create({ data: createCaseDto });
+    return result;
   }
 
-  update(id: string, updateCaseDto: UpdateCaseDto) {
-    const caseIndex = this.cases.findIndex((c) => c.id === id);
-    if (caseIndex === -1)
-      throw new NotFoundException(`Case with id ${id} not found`);
-    const updated = { ...this.cases[caseIndex], ...updateCaseDto };
-    this.cases[caseIndex] = updated;
-    return updated;
+  async update(id: string, updateCaseDto: UpdateCaseDto) {
+    try {
+      const result = await this.prisma.case.update({
+        where: { id },
+        data: updateCaseDto,
+      });
+      return result;
+    } catch (error) {
+      if (
+        error instanceof PrismaClientKnownRequestError &&
+        error.code === 'P2025'
+      )
+        throw new NotFoundException(`Case with id ${id} not found`);
+      throw error;
+    }
   }
 
-  remove(id: string) {
-    const caseIndex = this.cases.findIndex((c) => c.id === id);
-    if (caseIndex === -1)
-      throw new NotFoundException(`Case with id ${id} not found`);
-    this.cases.splice(caseIndex, 1);
-    return {
-      deleted: true,
-      id,
-    };
+  async remove(id: string) {
+    try {
+      const result = await this.prisma.case.delete({ where: { id } });
+      return result;
+    } catch (error) {
+      if (
+        error instanceof PrismaClientKnownRequestError &&
+        error.code === 'P2025'
+      )
+        throw new NotFoundException(`Case with id ${id} not found`);
+      throw error;
+    }
   }
 }
