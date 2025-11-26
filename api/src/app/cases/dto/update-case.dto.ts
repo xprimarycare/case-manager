@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
+import { UpdateCaseDto as IUpdateCaseDto } from '@case-manager/shared-types';
 
-export class UpdateCaseDto {
+export class UpdateCaseDto implements IUpdateCaseDto {
   @ApiProperty({ description: 'The title of the case' })
   @IsString()
   @IsOptional()

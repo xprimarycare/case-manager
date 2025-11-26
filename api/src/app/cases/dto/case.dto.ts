@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
+import { CaseDto as ICaseDto } from '@case-manager/shared-types';
 
-export class CaseDto {
+export class CaseDto implements ICaseDto {
   @IsString()
   @ApiProperty({ description: 'The id of the case' })
   id: string;

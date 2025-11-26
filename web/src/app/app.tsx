@@ -2,12 +2,12 @@
 // import styles from './app.module.css';
 
 import { Stack } from '@mantine/core';
-import CaseCreationForm from './case-creation-form';
+import CaseForm from './case-form';
 
 export function App() {
   return (
     <Stack>
-      <CaseCreationForm />
+      <CaseForm />
     </Stack>
   );
 }
