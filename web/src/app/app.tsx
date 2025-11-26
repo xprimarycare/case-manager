@@ -1,12 +1,14 @@
 // Uncomment this line to use CSS modules
 // import styles from './app.module.css';
-import NxWelcome from './nx-welcome';
+
+import { Stack } from '@mantine/core';
+import CaseCreationForm from './case-creation-form';
 
 export function App() {
   return (
-    <div>
-      <NxWelcome title="web" />
-    </div>
+    <Stack>
+      <CaseCreationForm />
+    </Stack>
   );
 }
 

@@ -50,6 +50,9 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@mantine/core": "^8.3.9",
+    "@mantine/form": "^8.3.9",
+    "@mantine/hooks": "^8.3.9",
     "@nestjs/common": "^11.0.0",
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",
