@@ -12,11 +12,6 @@ import {
 import axios from 'axios';
 import { CreateCaseDto } from '@case-manager/shared-types';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-if (!API_BASE_URL) {
-  throw new Error('VITE_API_BASE_URL is not set');
-}
-
 const CaseForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -54,12 +49,15 @@ const CaseForm = () => {
   });
 
   const handleSubmit = async (values: CreateCaseDto) => {
+    const apiBaseUrl =
+      import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+
     setLoading(true);
     setError(null);
     setSuccess(false);
 
     try {
-      await axios.post(`${API_BASE_URL}/cases`, values);
+      await axios.post(`${apiBaseUrl}/cases`, values);
       form.reset();
       setSuccess(true);
     } catch (err) {
