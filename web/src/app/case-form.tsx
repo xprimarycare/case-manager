@@ -115,7 +115,8 @@ const CaseForm = () => {
             <Textarea
               label="Summary"
               placeholder="Enter case summary"
-              minRows={4}
+              minRows={5}
+              autosize
               {...form.getInputProps('summary')}
             />
 
