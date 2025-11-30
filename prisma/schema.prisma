@@ -15,7 +15,7 @@ datasource db {
 }
 
 model Case {
-  id          String @id @default(uuid())
+  id          String @id @default(uuid()) @db.Uuid
   title       String
   patientName String
   summary     String
