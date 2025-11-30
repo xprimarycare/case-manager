@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "Case" (
-    "id" UUID NOT NULL,
+    "id" UUID NOT NULL DEFAULT gen_random_uuid(),
     "title" TEXT NOT NULL,
     "patientName" TEXT NOT NULL,
     "summary" TEXT NOT NULL,
