@@ -6,5 +6,5 @@ dist/
 .vscode/
 .nx/cache/
 .nx/workspace-data
-/generated/prisma
+api/src/generated/prisma
 .env
