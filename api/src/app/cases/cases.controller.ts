@@ -57,6 +57,7 @@ export class CasesController {
     description: 'Case updated successfully',
   })
   @ApiNotFoundResponse({ description: 'Case not found' })
+  @ApiBadRequestResponse({ description: 'PATCH body cannot be empty' })
   @Patch(':id')
   async update(
     @Param('id') id: string,
