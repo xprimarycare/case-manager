@@ -39,5 +39,6 @@ export default defineConfig(() => ({
       reportsDirectory: '../coverage/web',
       provider: 'v8' as const,
     },
+    passWithNoTests: true,
   },
 }));

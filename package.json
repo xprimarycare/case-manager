@@ -37,6 +37,7 @@
     "jest-util": "^30.0.2",
     "jiti": "2.4.2",
     "jsdom": "~22.1.0",
+    "jsonc-eslint-parser": "^2.1.0",
     "nx": "22.0.4",
     "prettier": "^2.6.2",
     "prisma": "^6.19.0",
@@ -50,6 +51,9 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@mantine/core": "^8.3.9",
+    "@mantine/form": "^8.3.9",
+    "@mantine/hooks": "^8.3.9",
     "@nestjs/common": "^11.0.0",
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",
