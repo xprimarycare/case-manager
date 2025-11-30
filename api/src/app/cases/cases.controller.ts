@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Delete,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { CaseDto } from './dto/case.dto';
 import { CreateCaseDto } from './dto/create-case.dto';
@@ -37,8 +38,9 @@ export class CasesController {
     description: 'Case retrieved successfully',
   })
   @ApiNotFoundResponse({ description: 'Case not found' })
+  @ApiBadRequestResponse({ description: 'Invalid id format' })
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<CaseDto> {
+  async findOne(@Param('id', ParseUUIDPipe) id: string): Promise<CaseDto> {
     return await this.casesService.findOne(id);
   }
 
@@ -60,7 +62,7 @@ export class CasesController {
   @ApiBadRequestResponse({ description: 'Invalid input' })
   @Patch(':id')
   async update(
-    @Param('id') id: string,
+    @Param('id', ParseUUIDPipe) id: string,
     @Body() updateCaseDto: UpdateCaseDto
   ): Promise<CaseDto> {
     return await this.casesService.update(id, updateCaseDto);
@@ -77,9 +79,10 @@ export class CasesController {
     description: 'Case deleted successfully',
   })
   @ApiNotFoundResponse({ description: 'Case not found' })
+  @ApiBadRequestResponse({ description: 'Invalid id format' })
   @Delete(':id')
   async remove(
-    @Param('id') id: string
+    @Param('id', ParseUUIDPipe) id: string
   ): Promise<{ deleted: boolean; id: string }> {
     const result = await this.casesService.remove(id);
     return { deleted: true, id: result.id };
