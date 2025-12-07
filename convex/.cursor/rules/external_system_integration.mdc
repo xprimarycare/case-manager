@@ -1,0 +1,9 @@
+---
+description: This rule is useful for functions that integrate with external systems
+alwaysApply: false
+---
+
+When integrating with external systems:
+
+- Keep functions that integrate with external systems modular
+- Use dependency injection so automated tests can easily mock the call to the external system

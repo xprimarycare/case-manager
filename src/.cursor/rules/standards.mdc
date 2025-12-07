@@ -1,0 +1,9 @@
+---
+globs: **/*.ts,**/*.tsx
+alwaysApply: false
+---
+
+This rule provides standards for frontend components:
+
+- Use standard Mantine components and properties whenever possible
+- Use @tabler/react-icons for icons
