@@ -7,8 +7,8 @@ export const createCase = mutation({
         title: v.string(),
         patient: v.object({
             name: v.string(),
-            gender: v.optional(v.string()),
-            dateOfBirth: v.optional(v.string()),
+            gender: v.string(),
+            dateOfBirth: v.string(),
         }),
         encounter: v.object({
             date: v.optional(v.string()),
@@ -41,8 +41,8 @@ export const updateCase = mutation({
         patient: v.optional(
             v.object({
                 name: v.string(),
-                gender: v.optional(v.string()),
-                dateOfBirth: v.optional(v.string()),
+                gender: v.string(),
+                dateOfBirth: v.string(),
             })
         ),
         encounter: v.optional(

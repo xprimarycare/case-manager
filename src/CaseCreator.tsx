@@ -27,7 +27,7 @@ type FormValues = {
     title: string;
     patient: {
         name: string;
-        gender: string;
+        gender: string | null;
         dateOfBirth: string;
     };
     encounterDate: string;
@@ -64,8 +64,8 @@ const buildCasePayload = (
         title: formValues.title,
         patient: {
             name: formValues.patient.name,
-            gender: formValues.patient.gender || undefined,
-            dateOfBirth: formValues.patient.dateOfBirth || undefined,
+            gender: formValues.patient.gender ?? "",
+            dateOfBirth: formValues.patient.dateOfBirth,
         },
         encounter: {
             date: formValues.encounterDate || undefined,
@@ -123,6 +123,14 @@ const CaseCreator = () => {
                 errors["patient.name"] = "Patient name is required";
             }
 
+            if (!(values.patient.gender ?? "").trim()) {
+                errors["patient.gender"] = "Gender is required";
+            }
+
+            if (!values.patient.dateOfBirth.trim()) {
+                errors["patient.dateOfBirth"] = "Date of birth is required";
+            }
+
             return errors;
         },
     });
@@ -166,7 +174,7 @@ const CaseCreator = () => {
                         caseId,
                         patient: {
                             name: form.values.patient.name,
-                            gender: form.values.patient.gender,
+                            gender: form.values.patient.gender ?? "",
                             dateOfBirth: form.values.patient.dateOfBirth,
                         },
                         encounter: {
