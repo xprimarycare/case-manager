@@ -311,6 +311,7 @@ const CaseCreator = () => {
                             disabled={isFormDisabled}
                             {...form.getInputProps("patient.gender")}
                             clearable
+                            searchable
                         />
                         <TextInput
                             label="Date of Birth"
