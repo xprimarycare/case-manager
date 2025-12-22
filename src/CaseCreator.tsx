@@ -83,6 +83,7 @@ const CaseCreator = () => {
     const { id } = useParams<{ id?: string }>();
     const isEditMode = !!id;
     const [isLoading, setIsLoading] = useState(false);
+    const isReadyToSendToEmr = useQuery(api.fhir.readyToSend);
     const [sendToEmr, setSendToEmr] = useState(() => !isEditMode);
     const createCase = useMutation(api.cases.createCase);
     const updateCase = useMutation(api.cases.updateCase);
@@ -371,10 +372,14 @@ const CaseCreator = () => {
                     <Divider />
 
                     <Checkbox
-                        label="Create in EMR"
+                        label={
+                            isReadyToSendToEmr
+                                ? `Create in EMR`
+                                : `Create in EMR (not configured)`
+                        }
                         checked={sendToEmr}
                         onChange={(e) => setSendToEmr(e.currentTarget.checked)}
-                        disabled={isFormDisabled}
+                        disabled={isFormDisabled || !isReadyToSendToEmr}
                         description={`If checked, the ${isEditMode ? "Update" : "Create"} case button will also create a copy of the case in the EMR`}
                     />
 

@@ -1,10 +1,23 @@
-import { action, internalMutation } from "./_generated/server";
+import { action, internalMutation, query } from "./_generated/server";
 import { v } from "convex/values";
 import { phenoml, PhenoMLClient } from "phenoml";
 import { internal } from "./_generated/api";
 import { Doc } from "./_generated/dataModel";
 import { WithoutSystemFields } from "convex/server";
 import { ResourceType } from "./types";
+
+export const readyToSend = query({
+    handler: async (_ctx) => {
+        const username = process.env.PHENOML_USERNAME;
+        const password = process.env.PHENOML_PASSWORD;
+        const baseUrl = process.env.PHENOML_BASE_URL;
+        const fhirProviderId = process.env.PHENOML_FHIR_PROVIDER_ID;
+        if (!username || !password || !baseUrl || !fhirProviderId) {
+            return false;
+        }
+        return true;
+    },
+});
 
 export const sendCaseToEmrThroughPhenoML = action({
     args: {
