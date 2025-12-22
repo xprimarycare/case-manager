@@ -11,6 +11,7 @@ import {
     Select,
     Divider,
     Checkbox,
+    TagsInput,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { modals } from "@mantine/modals";
@@ -32,17 +33,9 @@ type FormValues = {
     encounterDate: string;
     chiefComplaint: string;
     hpi: string;
-    allergies: string;
-    medications: string;
-    conditions: string;
-};
-
-// Helper: Split textarea value into array, filtering empty strings
-const splitTextareaToArray = (value: string): string[] => {
-    return value
-        .split("\n")
-        .map((line) => line.trim())
-        .filter((line) => line.length > 0);
+    allergies: string[];
+    medications: string[];
+    conditions: string[];
 };
 
 // Helper: Map caseData to form values
@@ -57,9 +50,9 @@ const mapCaseDataToFormValues = (caseData: Doc<"cases">) => {
         encounterDate: caseData.encounter?.date || "",
         chiefComplaint: caseData.chiefComplaint || "",
         hpi: caseData.hpi || "",
-        allergies: caseData.allergies?.join("\n") || "",
-        medications: caseData.medications?.join("\n") || "",
-        conditions: caseData.conditions?.join("\n") || "",
+        allergies: caseData.allergies ?? [],
+        medications: caseData.medications ?? [],
+        conditions: caseData.conditions ?? [],
     };
 };
 
@@ -79,9 +72,9 @@ const buildCasePayload = (
         },
         chiefComplaint: formValues.chiefComplaint || undefined,
         hpi: formValues.hpi || undefined,
-        allergies: splitTextareaToArray(formValues.allergies),
-        medications: splitTextareaToArray(formValues.medications),
-        conditions: splitTextareaToArray(formValues.conditions),
+        allergies: formValues.allergies,
+        medications: formValues.medications,
+        conditions: formValues.conditions,
     };
 };
 
@@ -114,9 +107,9 @@ const CaseCreator = () => {
             encounterDate: new Date().toISOString().split("T")[0],
             chiefComplaint: "",
             hpi: "",
-            allergies: "",
-            medications: "",
-            conditions: "",
+            allergies: [],
+            medications: [],
+            conditions: [],
         },
         validate: (values) => {
             const errors: Record<string, any> = {};
@@ -180,13 +173,9 @@ const CaseCreator = () => {
                         },
                         chiefComplaint: form.values.chiefComplaint,
                         hpi: form.values.hpi,
-                        allergies: splitTextareaToArray(form.values.allergies),
-                        medications: splitTextareaToArray(
-                            form.values.medications
-                        ),
-                        conditions: splitTextareaToArray(
-                            form.values.conditions
-                        ),
+                        allergies: form.values.allergies,
+                        medications: form.values.medications,
+                        conditions: form.values.conditions,
                     });
 
                     if (fhirResult.success) {
@@ -358,29 +347,20 @@ const CaseCreator = () => {
                                 {...form.getInputProps("hpi")}
                                 maw={500}
                             />
-                            <Textarea
-                                label="Allergies"
-                                placeholder="Enter one allergy per line"
-                                minRows={3}
-                                autosize
+                            <TagsInput
+                                label="Allergies (press enter to add)"
                                 disabled={isFormDisabled}
                                 {...form.getInputProps("allergies")}
                                 maw={500}
                             />
-                            <Textarea
-                                label="Medications"
-                                placeholder="Enter one medication per line"
-                                minRows={3}
-                                autosize
+                            <TagsInput
+                                label="Medications (press enter to add)"
                                 disabled={isFormDisabled}
                                 {...form.getInputProps("medications")}
                                 maw={500}
                             />
-                            <Textarea
-                                label="Conditions"
-                                placeholder="Enter one condition per line"
-                                minRows={3}
-                                autosize
+                            <TagsInput
+                                label="Conditions (press enter to add)"
                                 disabled={isFormDisabled}
                                 {...form.getInputProps("conditions")}
                                 maw={500}
