@@ -144,6 +144,7 @@ const CaseCreator = () => {
     useEffect(() => {
         if (isEditMode && caseData) {
             form.setValues(mapCaseDataToFormValues(caseData));
+            form.resetDirty();
         }
     }, [caseData, isEditMode]);
 
@@ -263,14 +264,22 @@ const CaseCreator = () => {
     };
 
     const handleBackClick = () => {
-        modals.openConfirmModal({
-            title: "Leave page?",
-            children:
-                "Are you sure you want to go back to the case list? Any unsaved changes will be lost.",
-            labels: { confirm: "Discard unsaved changes", cancel: "Stay here" },
-            onConfirm: () => navigate("/"),
-            confirmProps: { color: "red" },
-        });
+        console.log(form.isDirty());
+        if (form.isDirty()) {
+            modals.openConfirmModal({
+                title: "Leave page?",
+                children:
+                    "Are you sure you want to go back to the case list? Any unsaved changes will be lost.",
+                labels: {
+                    confirm: "Discard unsaved changes",
+                    cancel: "Stay here",
+                },
+                onConfirm: () => navigate("/"),
+                confirmProps: { color: "red" },
+            });
+        } else {
+            navigate("/");
+        }
     };
 
     return (
