@@ -7,7 +7,6 @@ import {
     Title,
     Group,
     Text,
-    Loader,
     Select,
     Divider,
     Checkbox,
