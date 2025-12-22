@@ -87,22 +87,26 @@ export const sendCaseToEmrThroughPhenoML = action({
         });
 
         // Condition (for chief complaint)
-        await createResourcePhenoml({
-            client,
-            resource: "condition-encounter-diagnosis",
-            fhirProviderId,
-            naturalLanguage: `${chiefComplaint} is the chief complaint`,
-            fhirResources,
-        });
+        if (chiefComplaint && chiefComplaint.trim()) {
+            await createResourcePhenoml({
+                client,
+                resource: "condition-encounter-diagnosis",
+                fhirProviderId,
+                naturalLanguage: `${chiefComplaint} is the chief complaint`,
+                fhirResources,
+            });
+        }
 
         // Observation (for HPI)
-        await createResourcePhenoml({
-            client,
-            resource: "simple-observation",
-            fhirProviderId,
-            naturalLanguage: `${hpi} is the History of Present Illness. This was documented during encounter with FHIR ID ${encounterFhirId}`,
-            fhirResources,
-        });
+        if (hpi && hpi.trim()) {
+            await createResourcePhenoml({
+                client,
+                resource: "simple-observation",
+                fhirProviderId,
+                naturalLanguage: `${hpi} is the History of Present Illness. This was documented during encounter with FHIR ID ${encounterFhirId}`,
+                fhirResources,
+            });
+        }
 
         // Conditions (for allergies)
         for (const allergy of allergies) {
