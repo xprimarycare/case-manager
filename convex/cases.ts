@@ -5,56 +5,30 @@ import { paginationOptsValidator } from "convex/server";
 export const createCase = mutation({
     args: {
         title: v.string(),
-        // AI mode fields
-        summary: v.optional(v.string()),
-        // Detailed mode fields
         patient: v.object({
             name: v.string(),
             gender: v.optional(v.string()),
             dateOfBirth: v.optional(v.string()),
         }),
-        note: v.optional(
-            v.object({
-                hpi: v.optional(v.string()),
-                reasonForVisit: v.optional(v.string()),
-                assessment: v.optional(v.string()),
-                plan: v.optional(v.string()),
-            })
-        ),
-        vitals: v.optional(
-            v.object({
-                height: v.optional(v.number()),
-                weight: v.optional(v.number()),
-                waistCircumference: v.optional(v.number()),
-                temperature: v.optional(v.number()),
-                temperatureSite: v.optional(v.string()),
-                bloodPressureSystolic: v.optional(v.number()),
-                bloodPressureDiastolic: v.optional(v.number()),
-                bloodPressureSite: v.optional(v.string()),
-                pulseRate: v.optional(v.number()),
-                pulseRhythm: v.optional(v.string()),
-                respirationRate: v.optional(v.number()),
-                oxygenSaturation: v.optional(v.number()),
-                notes: v.optional(v.string()),
-            })
-        ),
-        physicalExam: v.optional(
-            v.object({
-                constitutional: v.optional(v.string()),
-                cardiovascular: v.optional(v.string()),
-                pulmonary: v.optional(v.string()),
-                other: v.optional(v.string()),
-            })
-        ),
+        encounter: v.object({
+            date: v.optional(v.string()),
+        }),
+        chiefComplaint: v.optional(v.string()),
+        hpi: v.optional(v.string()),
+        allergies: v.optional(v.array(v.string())),
+        medications: v.optional(v.array(v.string())),
+        conditions: v.optional(v.array(v.string())),
     },
     handler: async (ctx, args) => {
         return await ctx.db.insert("cases", {
             title: args.title,
             patient: args.patient,
-            summary: args.summary,
-            note: args.note,
-            vitals: args.vitals,
-            physicalExam: args.physicalExam,
+            encounter: args.encounter,
+            chiefComplaint: args.chiefComplaint,
+            hpi: args.hpi,
+            allergies: args.allergies,
+            medications: args.medications,
+            conditions: args.conditions,
             updatedAt: Date.now(),
         });
     },
@@ -64,9 +38,6 @@ export const updateCase = mutation({
     args: {
         id: v.id("cases"),
         title: v.string(),
-        // AI mode fields
-        summary: v.optional(v.string()),
-        // Detailed mode fields
         patient: v.optional(
             v.object({
                 name: v.string(),
@@ -74,48 +45,28 @@ export const updateCase = mutation({
                 dateOfBirth: v.optional(v.string()),
             })
         ),
-        note: v.optional(
+        encounter: v.optional(
             v.object({
-                hpi: v.optional(v.string()),
-                reasonForVisit: v.optional(v.string()),
-                assessment: v.optional(v.string()),
-                plan: v.optional(v.string()),
+                date: v.optional(v.string()),
             })
         ),
-        vitals: v.optional(
-            v.object({
-                height: v.optional(v.number()),
-                weight: v.optional(v.number()),
-                waistCircumference: v.optional(v.number()),
-                temperature: v.optional(v.number()),
-                temperatureSite: v.optional(v.string()),
-                bloodPressureSystolic: v.optional(v.number()),
-                bloodPressureDiastolic: v.optional(v.number()),
-                bloodPressureSite: v.optional(v.string()),
-                pulseRate: v.optional(v.number()),
-                pulseRhythm: v.optional(v.string()),
-                respirationRate: v.optional(v.number()),
-                oxygenSaturation: v.optional(v.number()),
-                notes: v.optional(v.string()),
-            })
-        ),
-        physicalExam: v.optional(
-            v.object({
-                constitutional: v.optional(v.string()),
-                cardiovascular: v.optional(v.string()),
-                pulmonary: v.optional(v.string()),
-                other: v.optional(v.string()),
-            })
-        ),
+        chiefComplaint: v.optional(v.string()),
+        hpi: v.optional(v.string()),
+        allergies: v.optional(v.array(v.string())),
+        medications: v.optional(v.array(v.string())),
+        conditions: v.optional(v.array(v.string())),
     },
     handler: async (ctx, args) => {
         const updateData: any = {
             title: args.title,
             updatedAt: Date.now(),
             patient: args.patient,
-            note: args.note,
-            vitals: args.vitals,
-            physicalExam: args.physicalExam,
+            encounter: args.encounter,
+            chiefComplaint: args.chiefComplaint,
+            hpi: args.hpi,
+            allergies: args.allergies,
+            medications: args.medications,
+            conditions: args.conditions,
         };
 
         return await ctx.db.patch(args.id, updateData);
