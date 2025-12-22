@@ -90,7 +90,7 @@ const CaseCreator = () => {
     const { id } = useParams<{ id?: string }>();
     const isEditMode = !!id;
     const [isLoading, setIsLoading] = useState(false);
-    const [sendToEmr, setSendToEmr] = useState(false);
+    const [sendToEmr, setSendToEmr] = useState(() => !isEditMode);
     const createCase = useMutation(api.cases.createCase);
     const updateCase = useMutation(api.cases.updateCase);
     const sendToEmrAction = useAction(api.fhir.sendCaseToEmrThroughPhenoML);
