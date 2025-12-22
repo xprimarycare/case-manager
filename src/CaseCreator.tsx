@@ -290,88 +290,95 @@ const CaseCreator = () => {
                         {...form.getInputProps("title")}
                     />
 
+                    <Divider />
                     {/* Patient Information */}
-                    <Divider label="Patient Information" labelPosition="left" />
-                    <TextInput
-                        label="Patient Name"
-                        placeholder="Enter patient name"
-                        disabled={isFormDisabled}
-                        {...form.getInputProps("patient.name")}
-                    />
-                    <Group grow>
-                        <Select
-                            label="Gender"
-                            placeholder="Select gender"
-                            data={[
-                                "Male",
-                                "Female",
-                                "Other",
-                                "Prefer not to say",
-                            ]}
-                            disabled={isFormDisabled}
-                            {...form.getInputProps("patient.gender")}
-                            clearable
-                            searchable
-                        />
-                        <TextInput
-                            label="Date of Birth"
-                            type="date"
-                            disabled={isFormDisabled}
-                            {...form.getInputProps("patient.dateOfBirth")}
-                        />
-                    </Group>
+                    <Stack>
+                        <Title order={5}>Patient Information</Title>
+                        <Stack>
+                            <TextInput
+                                label="Patient Name"
+                                placeholder="Enter patient name"
+                                disabled={isFormDisabled}
+                                {...form.getInputProps("patient.name")}
+                            />
+                            <Select
+                                label="Gender"
+                                placeholder="Select gender"
+                                data={[
+                                    "Male",
+                                    "Female",
+                                    "Other",
+                                    "Prefer not to say",
+                                ]}
+                                disabled={isFormDisabled}
+                                {...form.getInputProps("patient.gender")}
+                                clearable
+                                searchable
+                            />
+                            <TextInput
+                                label="Date of Birth"
+                                type="date"
+                                disabled={isFormDisabled}
+                                {...form.getInputProps("patient.dateOfBirth")}
+                            />
+                        </Stack>
+                    </Stack>
+                    <Divider />
 
                     {/* Encounter Information */}
-                    <Divider
-                        label="Encounter Information"
-                        labelPosition="left"
-                    />
-                    <TextInput
-                        label="Encounter Date"
-                        type="date"
-                        disabled={isFormDisabled}
-                        {...form.getInputProps("encounterDate")}
-                    />
-                    <Textarea
-                        label="Chief Complaint"
-                        placeholder="Enter chief complaint"
-                        minRows={2}
-                        autosize
-                        disabled={isFormDisabled}
-                        {...form.getInputProps("chiefComplaint")}
-                    />
-                    <Textarea
-                        label="History of Present Illness (HPI)"
-                        placeholder="Enter HPI"
-                        minRows={3}
-                        autosize
-                        disabled={isFormDisabled}
-                        {...form.getInputProps("hpi")}
-                    />
-                    <Textarea
-                        label="Allergies"
-                        placeholder="Enter one allergy per line"
-                        minRows={3}
-                        autosize
-                        disabled={isFormDisabled}
-                        {...form.getInputProps("allergies")}
-                    />
-                    <Textarea
-                        label="Medications"
-                        placeholder="Enter one medication per line"
-                        minRows={3}
-                        autosize
-                        disabled={isFormDisabled}
-                        {...form.getInputProps("medications")}
-                    />
-                    <Textarea
-                        label="Conditions"
-                        placeholder="Enter one condition per line"
-                        minRows={3}
-                        autosize
-                        disabled={isFormDisabled}
-                        {...form.getInputProps("conditions")}
-                    />
+                    <Stack>
+                        <Title order={5}>Encounter Information</Title>
+                        <Stack>
+                            <TextInput
+                                label="Encounter Date"
+                                type="date"
+                                disabled={isFormDisabled}
+                                {...form.getInputProps("encounterDate")}
+                            />
+                            <Textarea
+                                label="Chief Complaint"
+                                placeholder="Enter chief complaint"
+                                minRows={2}
+                                autosize
+                                disabled={isFormDisabled}
+                                {...form.getInputProps("chiefComplaint")}
+                            />
+                            <Textarea
+                                label="History of Present Illness (HPI)"
+                                placeholder="Enter HPI"
+                                minRows={3}
+                                autosize
+                                disabled={isFormDisabled}
+                                {...form.getInputProps("hpi")}
+                            />
+                            <Textarea
+                                label="Allergies"
+                                placeholder="Enter one allergy per line"
+                                minRows={3}
+                                autosize
+                                disabled={isFormDisabled}
+                                {...form.getInputProps("allergies")}
+                            />
+                            <Textarea
+                                label="Medications"
+                                placeholder="Enter one medication per line"
+                                minRows={3}
+                                autosize
+                                disabled={isFormDisabled}
+                                {...form.getInputProps("medications")}
+                            />
+                            <Textarea
+                                label="Conditions"
+                                placeholder="Enter one condition per line"
+                                minRows={3}
+                                autosize
+                                disabled={isFormDisabled}
+                                {...form.getInputProps("conditions")}
+                            />
+                        </Stack>
+                    </Stack>
+
+                    <Divider />
 
                     <Checkbox
                         label="Create in EMR"

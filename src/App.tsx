@@ -18,7 +18,7 @@ export default function App() {
                 <Notifications autoClose={5000} />
                 <ModalsProvider>
                     <BrowserRouter>
-                        <Stack m="md">
+                        <Stack m="xl">
                             <Routes>
                                 <Route path="/" element={<CaseList />} />
                                 <Route
