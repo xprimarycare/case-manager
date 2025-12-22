@@ -12,7 +12,7 @@ export default defineSchema({
             dateOfBirth: v.string(),
         }),
         encounter: v.object({
-            date: v.optional(v.string()),
+            date: v.string(),
         }),
         chiefComplaint: v.optional(v.string()),
         hpi: v.optional(v.string()),

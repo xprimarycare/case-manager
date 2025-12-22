@@ -68,7 +68,7 @@ const buildCasePayload = (
             dateOfBirth: formValues.patient.dateOfBirth,
         },
         encounter: {
-            date: formValues.encounterDate || undefined,
+            date: formValues.encounterDate,
         },
         chiefComplaint: formValues.chiefComplaint || undefined,
         hpi: formValues.hpi || undefined,
@@ -129,6 +129,10 @@ const CaseCreator = () => {
 
             if (!values.patient.dateOfBirth.trim()) {
                 errors["patient.dateOfBirth"] = "Date of birth is required";
+            }
+
+            if (!values.encounterDate.trim()) {
+                errors.encounterDate = "Encounter date is required";
             }
 
             return errors;
