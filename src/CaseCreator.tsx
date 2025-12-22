@@ -12,6 +12,7 @@ import {
     Divider,
     Checkbox,
     TagsInput,
+    LoadingOverlay,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { modals } from "@mantine/modals";
@@ -30,9 +31,11 @@ type FormValues = {
     patient: {
         name: string;
         gender: string | null;
-        dateOfBirth: string;
+        dateOfBirth: string | null;
     };
-    encounterDate: string;
+    encounter: {
+        date: string | null;
+    };
     chiefComplaint: string;
     hpi: string;
     allergies: string[];
@@ -45,11 +48,13 @@ const mapCaseDataToFormValues = (caseData: Doc<"cases">) => {
     return {
         title: caseData.title,
         patient: {
-            name: caseData.patient.name || "",
-            gender: caseData.patient.gender || "",
-            dateOfBirth: caseData.patient.dateOfBirth || "",
+            name: caseData.patient.name,
+            gender: caseData.patient.gender,
+            dateOfBirth: caseData.patient.dateOfBirth,
         },
-        encounterDate: caseData.encounter?.date || "",
+        encounter: {
+            date: caseData.encounter.date,
+        },
         chiefComplaint: caseData.chiefComplaint || "",
         hpi: caseData.hpi || "",
         allergies: caseData.allergies ?? [],
@@ -62,18 +67,27 @@ const mapCaseDataToFormValues = (caseData: Doc<"cases">) => {
 const buildCasePayload = (
     formValues: FormValues
 ): WithoutSystemFields<Omit<Doc<"cases">, "updatedAt">> => {
+    if (
+        !formValues.encounter.date ||
+        !formValues.patient.dateOfBirth ||
+        !formValues.patient.gender
+    ) {
+        throw new Error(
+            "buildCasePayload should never run before the form is validated"
+        );
+    }
     return {
         title: formValues.title,
         patient: {
             name: formValues.patient.name,
-            gender: formValues.patient.gender ?? "",
+            gender: formValues.patient.gender,
             dateOfBirth: formValues.patient.dateOfBirth,
         },
         encounter: {
-            date: formValues.encounterDate,
+            date: formValues.encounter.date,
         },
-        chiefComplaint: formValues.chiefComplaint || undefined,
-        hpi: formValues.hpi || undefined,
+        chiefComplaint: formValues.chiefComplaint,
+        hpi: formValues.hpi,
         allergies: formValues.allergies,
         medications: formValues.medications,
         conditions: formValues.conditions,
@@ -105,9 +119,11 @@ const CaseCreator = () => {
             patient: {
                 name: "",
                 gender: "",
-                dateOfBirth: "",
+                dateOfBirth: null,
             },
-            encounterDate: new Date().toISOString().split("T")[0],
+            encounter: {
+                date: new Date().toISOString().split("T")[0],
+            },
             chiefComplaint: "",
             hpi: "",
             allergies: [],
@@ -129,12 +145,12 @@ const CaseCreator = () => {
                 errors["patient.gender"] = "Gender is required";
             }
 
-            if (!values.patient.dateOfBirth.trim()) {
+            if (!values.patient.dateOfBirth) {
                 errors["patient.dateOfBirth"] = "Date of birth is required";
             }
 
-            if (!(values.encounterDate ?? "").trim()) {
-                errors.encounterDate = "Encounter date is required";
+            if (!values.encounter.date) {
+                errors["encounter.date"] = "Encounter date is required";
             }
 
             return errors;
@@ -148,76 +164,82 @@ const CaseCreator = () => {
         }
     }, [caseData, isEditMode]);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsLoading(true);
-        const formValidateResult = form.validate();
-        if (formValidateResult.hasErrors) {
-            const firstErrorPath = Object.keys(formValidateResult.errors)[0];
-            form.getInputNode(firstErrorPath)?.focus();
-            setIsLoading(false);
-            return;
-        }
-        try {
-            const title = form.values.title;
-            const payload = buildCasePayload(form.values);
+    const handleSubmit = form.onSubmit(
+        async (values) => {
+            setIsLoading(true);
 
-            let caseId: Id<"cases">;
-            if (isEditMode && id) {
-                await updateCase({
-                    id: id as Id<"cases">,
-                    ...payload,
-                });
-                caseId = id as Id<"cases">;
-            } else {
-                caseId = await createCase(payload);
-            }
-
-            // Send to the EMR if checkbox is checked
-            if (sendToEmr) {
-                try {
-                    // Convert encounter date to ISO string
-                    const encounterDateISO = form.values.encounterDate
-                        ? new Date(form.values.encounterDate).toISOString()
-                        : new Date().toISOString();
-
-                    const fhirResult = await sendToEmrAction({
-                        caseId,
-                        patient: {
-                            name: form.values.patient.name,
-                            gender: form.values.patient.gender ?? "",
-                            dateOfBirth: form.values.patient.dateOfBirth,
-                        },
-                        encounter: {
-                            date: encounterDateISO,
-                        },
-                        chiefComplaint: form.values.chiefComplaint,
-                        hpi: form.values.hpi,
-                        allergies: form.values.allergies,
-                        medications: form.values.medications,
-                        conditions: form.values.conditions,
+            // Create or update the case in our database
+            try {
+                const payload = buildCasePayload(values);
+                let caseId: Id<"cases">;
+                if (isEditMode && id) {
+                    await updateCase({
+                        id: id as Id<"cases">,
+                        ...payload,
                     });
+                    caseId = id as Id<"cases">;
+                } else {
+                    caseId = await createCase(payload);
+                }
+                const title = form.values.title;
 
-                    if (fhirResult.success) {
-                        notifications.show({
-                            message: (
-                                <Text>
-                                    Case "{title}" successfully{" "}
-                                    {isEditMode ? "updated" : "created"} and
-                                    sent to EMR.
-                                </Text>
-                            ),
-                            title: "Success",
-                            color: "green",
-                            icon: <IconCheck />,
-                            withBorder: true,
+                // Send to the EMR if checkbox is checked
+                if (sendToEmr) {
+                    try {
+                        const fhirResult = await sendToEmrAction({
+                            caseId,
+                            patient: {
+                                name: form.values.patient.name,
+                                gender: form.values.patient.gender ?? "",
+                                dateOfBirth: form.values.patient.dateOfBirth!, // Validation runs before onSubmit and makes sure this is not null
+                            },
+                            encounter: {
+                                date: form.values.encounter.date!, // Validation runs before onSubmit and makes sure this is not null
+                            },
+                            chiefComplaint: form.values.chiefComplaint,
+                            hpi: form.values.hpi,
+                            allergies: form.values.allergies,
+                            medications: form.values.medications,
+                            conditions: form.values.conditions,
                         });
-                    } else {
+
+                        if (fhirResult.success) {
+                            notifications.show({
+                                message: (
+                                    <Text>
+                                        Case "{title}" successfully{" "}
+                                        {isEditMode ? "updated" : "created"} and
+                                        sent to EMR.
+                                    </Text>
+                                ),
+                                title: "Success",
+                                color: "green",
+                                icon: <IconCheck />,
+                                withBorder: true,
+                            });
+                        } else {
+                            notifications.show({
+                                message: (
+                                    <Text>
+                                        Case "{title}" saved, but failed to send
+                                        to EMR: {fhirResult.message}
+                                    </Text>
+                                ),
+                                title: "Warning",
+                                color: "yellow",
+                                withBorder: true,
+                            });
+                        }
+                    } catch (error) {
+                        console.error("Error sending to EMR:", error);
                         notifications.show({
                             message: (
                                 <Text>
-                                    Case "{title}" saved, but failed to send to
-                                    EMR: {fhirResult.message}
+                                    Case "{title}" saved, but error sending to
+                                    EMR:{" "}
+                                    {error instanceof Error
+                                        ? error.message
+                                        : "Unknown error"}
                                 </Text>
                             ),
                             title: "Warning",
@@ -225,46 +247,35 @@ const CaseCreator = () => {
                             withBorder: true,
                         });
                     }
-                } catch (error) {
-                    console.error("Error sending to EMR:", error);
-                    notifications.show({
-                        message: (
-                            <Text>
-                                Case "{title}" saved, but error sending to EMR:{" "}
-                                {error instanceof Error
-                                    ? error.message
-                                    : "Unknown error"}
-                            </Text>
-                        ),
-                        title: "Warning",
-                        color: "yellow",
-                        withBorder: true,
-                    });
+                } else {
+                    // Not sending to EMR.
+                    if (form.isDirty()) {
+                        notifications.show({
+                            message: (
+                                <Text>
+                                    Case "{title}" successfully{" "}
+                                    {isEditMode ? "updated" : "created"}
+                                </Text>
+                            ),
+                            title: "Success",
+                            color: "green",
+                            icon: <IconCheck />,
+                            withBorder: true,
+                        });
+                    }
                 }
-            } else {
-                notifications.show({
-                    message: (
-                        <Text>
-                            Case "{title}" successfully{" "}
-                            {isEditMode ? "updated" : "created"}
-                        </Text>
-                    ),
-                    title: "Success",
-                    color: "green",
-                    icon: <IconCheck />,
-                    withBorder: true,
-                });
+                navigate("/");
+            } finally {
+                setIsLoading(false);
             }
-
-            form.reset();
-            navigate("/");
-        } finally {
-            setIsLoading(false);
+        },
+        (errors) => {
+            const firstErrorPath = Object.keys(errors)[0];
+            form.getInputNode(firstErrorPath)?.focus();
         }
-    };
+    );
 
     const handleBackClick = () => {
-        console.log(form.isDirty());
         if (form.isDirty()) {
             modals.openConfirmModal({
                 title: "Leave page?",
@@ -360,7 +371,7 @@ const CaseCreator = () => {
                             <DateInput
                                 label="Encounter Date"
                                 disabled={isFormDisabled}
-                                {...form.getInputProps("encounterDate")}
+                                {...form.getInputProps("encounter.date")}
                                 valueFormat="M/D/YYYY"
                                 placeholder="MM/DD/YYYY"
                                 maw={175}
@@ -438,24 +449,7 @@ const CaseCreator = () => {
                             Cancel
                         </Button>
                     </Group>
-                    {isQueryLoading && (
-                        <div
-                            style={{
-                                position: "absolute",
-                                top: 0,
-                                left: 0,
-                                right: 0,
-                                bottom: 0,
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                backgroundColor: "rgba(255, 255, 255, 0.8)",
-                                zIndex: 1000,
-                            }}
-                        >
-                            <Loader size="lg" />
-                        </div>
-                    )}
+                    {isQueryLoading && <LoadingOverlay visible />}
                 </Stack>
             </form>
         </>
