@@ -1,9 +1,10 @@
 import { action, internalMutation } from "./_generated/server";
 import { v } from "convex/values";
-import { PhenoMLClient } from "phenoml";
+import { phenoml, PhenoMLClient } from "phenoml";
 import { internal } from "./_generated/api";
 import { Doc } from "./_generated/dataModel";
 import { WithoutSystemFields } from "convex/server";
+import { ResourceType } from "./types";
 
 export const sendCaseToEmrThroughPhenoML = action({
     args: {
@@ -55,130 +56,71 @@ export const sendCaseToEmrThroughPhenoML = action({
         >[] = [];
 
         // Patient
-        const patientNaturalLanguage = `${patient.name} is a ${patient.gender} born on ${patient.dateOfBirth}`;
-        const patientResult = await client.tools.createFhirResource({
-            provider: fhirProviderId,
+        const patientFhirId = await createResourcePhenoml({
+            client,
             resource: "patient",
-            text: patientNaturalLanguage,
-        });
-
-        if (!patientResult.success) {
-            throw new Error("Failed to create patient");
-        }
-
-        const patientFhirId = patientResult.fhir_id!;
-
-        fhirResources.push({
-            resourceType: "patient",
-            fhirId: patientFhirId,
+            fhirProviderId,
+            naturalLanguage: `${patient.name} is a ${patient.gender} born on ${patient.dateOfBirth}`,
+            fhirResources,
         });
 
         // Encounter
-        const encounterNaturalLanguage = `${encounter.date} is the date of the encounter. It was an ambulatory encounter with patient ${patient.name} with FHIR ID ${patientFhirId}`;
-        const encounterResult = await client.tools.createFhirResource({
-            provider: fhirProviderId,
+        const encounterFhirId = await createResourcePhenoml({
+            client,
             resource: "encounter",
-            text: encounterNaturalLanguage,
-        });
-
-        if (!encounterResult.success) {
-            throw new Error("Failed to create encounter");
-        }
-
-        const encounterFhirId = encounterResult.fhir_id!;
-
-        fhirResources.push({
-            resourceType: "encounter",
-            fhirId: encounterFhirId,
+            fhirProviderId,
+            naturalLanguage: `${encounter.date} is the date of the encounter. It was an ambulatory encounter with patient ${patient.name} with FHIR ID ${patientFhirId}`,
+            fhirResources,
         });
 
         // Condition (for chief complaint)
-        const conditionNaturalLanguage = `${chiefComplaint} is the chief complaint`;
-        const conditionResult = await client.tools.createFhirResource({
-            provider: fhirProviderId,
+        await createResourcePhenoml({
+            client,
             resource: "condition-encounter-diagnosis",
-            text: conditionNaturalLanguage,
-        });
-
-        if (!conditionResult.success) {
-            throw new Error("Failed to create condition");
-        }
-
-        fhirResources.push({
-            resourceType: "condition",
-            fhirId: conditionResult.fhir_id!,
+            fhirProviderId,
+            naturalLanguage: `${chiefComplaint} is the chief complaint`,
+            fhirResources,
         });
 
         // Observation (for HPI)
-        const hpiObservationNaturalLanguage = `${hpi} is the History of Present Illness. This was documented during encounter with FHIR ID ${encounterFhirId}`;
-        const hpiObservationResult = await client.tools.createFhirResource({
-            provider: fhirProviderId,
+        await createResourcePhenoml({
+            client,
             resource: "simple-observation",
-            text: hpiObservationNaturalLanguage,
-        });
-
-        if (!hpiObservationResult.success) {
-            throw new Error("Failed to create HPI observation");
-        }
-
-        fhirResources.push({
-            resourceType: "observation",
-            fhirId: hpiObservationResult.fhir_id!,
+            fhirProviderId,
+            naturalLanguage: `${hpi} is the History of Present Illness. This was documented during encounter with FHIR ID ${encounterFhirId}`,
+            fhirResources,
         });
 
         // Conditions (for allergies)
         for (const allergy of allergies) {
-            const allergyNaturalLanguage = `The patient has the following allergy: ${allergy}. This was documented during the encounter with FHIR ID ${encounterFhirId}`;
-            const allergyResult = await client.tools.createFhirResource({
-                provider: fhirProviderId,
+            await createResourcePhenoml({
+                client,
                 resource: "condition-problems-health-concerns",
-                text: allergyNaturalLanguage,
-            });
-
-            if (!allergyResult.success) {
-                throw new Error("Failed to create allergy");
-            }
-
-            fhirResources.push({
-                resourceType: "condition",
-                fhirId: allergyResult.fhir_id!,
+                fhirProviderId,
+                naturalLanguage: `The patient has the following allergy: ${allergy}. This was documented during the encounter with FHIR ID ${encounterFhirId}`,
+                fhirResources,
             });
         }
 
         // MedicationRequests
         for (const medication of medications) {
-            const medicationNaturalLanguage = `The patient is taking the following medication: ${medication}. This was documented during the encounter with FHIR ID ${encounterFhirId}`;
-            const medicationResult = await client.tools.createFhirResource({
-                provider: fhirProviderId,
+            await createResourcePhenoml({
+                client,
                 resource: "medicationrequest",
-                text: medicationNaturalLanguage,
-            });
-            if (!medicationResult.success) {
-                throw new Error("Failed to create medication");
-            }
-
-            fhirResources.push({
-                resourceType: "medication-request",
-                fhirId: medicationResult.fhir_id!,
+                fhirProviderId,
+                naturalLanguage: `The patient is taking the following medication: ${medication}. This was documented during the encounter with FHIR ID ${encounterFhirId}`,
+                fhirResources,
             });
         }
 
         // Conditions
         for (const condition of conditions) {
-            const conditionNaturalLanguage = `The patient has the following condition: ${condition}. This was documented during the encounter with FHIR ID ${encounterFhirId}`;
-            const conditionResult = await client.tools.createFhirResource({
-                provider: fhirProviderId,
+            await createResourcePhenoml({
+                client,
                 resource: "condition-problems-health-concerns",
-                text: conditionNaturalLanguage,
-            });
-
-            if (!conditionResult.success) {
-                throw new Error("Failed to create condition");
-            }
-
-            fhirResources.push({
-                resourceType: "condition",
-                fhirId: conditionResult.fhir_id!,
+                fhirProviderId,
+                naturalLanguage: `The patient has the following condition: ${condition}. This was documented during the encounter with FHIR ID ${encounterFhirId}`,
+                fhirResources,
             });
         }
 
@@ -220,3 +162,73 @@ export const storeFhirResources = internalMutation({
         }
     },
 });
+
+type PhenomlResource = phenoml.tools.Lang2FhirAndCreateRequest["resource"];
+
+const createResourcePhenoml = async ({
+    client,
+    resource,
+    fhirProviderId,
+    naturalLanguage,
+    fhirResources,
+}: {
+    client: PhenoMLClient;
+    resource: PhenomlResource;
+    fhirProviderId: string;
+    naturalLanguage: string;
+    fhirResources: Omit<WithoutSystemFields<Doc<"fhirResources">>, "caseId">[];
+}): Promise<string> => {
+    const result = await client.tools.createFhirResource({
+        provider: fhirProviderId,
+        resource,
+        text: naturalLanguage,
+    });
+
+    if (!result.success) {
+        throw new Error(
+            `Failed to create ${resource} resource: ${result.message}`
+        );
+    }
+
+    const fhirId = result.fhir_id!;
+
+    fhirResources.push({
+        resourceType: mapPhenomlResourceToResourceType(resource),
+        fhirId,
+    });
+
+    return fhirId;
+};
+
+const mapPhenomlResourceToResourceType = (
+    resource: PhenomlResource
+): ResourceType => {
+    switch (resource) {
+        case "patient":
+            return "patient";
+        case "encounter":
+            return "encounter";
+        case "condition-encounter-diagnosis":
+            return "condition";
+        case "condition-problems-health-concerns":
+            return "condition";
+        case "simple-observation":
+            return "observation";
+        case "medicationrequest":
+            return "medication-request";
+        case "observation-clinical-result":
+            return "observation";
+        case "observation-lab":
+            return "observation";
+        case "appointment":
+        case "auto":
+        case "careplan":
+        case "coverage":
+        case "procedure":
+        case "questionnaire":
+        case "questionnaireresponse":
+        case "vital-signs":
+        default:
+            throw new Error(`Resource type not implemented: ${resource}`);
+    }
+};

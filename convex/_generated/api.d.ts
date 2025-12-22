@@ -10,6 +10,7 @@
 
 import type * as cases from "../cases.js";
 import type * as fhir from "../fhir.js";
+import type * as types from "../types.js";
 
 import type {
   ApiFromModules,
@@ -20,6 +21,7 @@ import type {
 declare const fullApi: ApiFromModules<{
   cases: typeof cases;
   fhir: typeof fhir;
+  types: typeof types;
 }>;
 
 /**

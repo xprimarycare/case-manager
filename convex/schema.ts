@@ -1,5 +1,6 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
+import { resourceTypeValidator } from "./types";
 
 export default defineSchema({
     cases: defineTable({
@@ -22,13 +23,7 @@ export default defineSchema({
         .index("by_updatedAt", ["updatedAt"])
         .searchIndex("title", { searchField: "title" }),
     fhirResources: defineTable({
-        resourceType: v.union(
-            v.literal("patient"),
-            v.literal("encounter"),
-            v.literal("condition"),
-            v.literal("observation"),
-            v.literal("medication-request")
-        ),
+        resourceType: resourceTypeValidator,
         fhirId: v.string(),
         caseId: v.id("cases"),
     }),
