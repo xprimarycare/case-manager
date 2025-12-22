@@ -22,6 +22,8 @@ import type { Doc, Id } from "../convex/_generated/dataModel";
 import { useNavigate, useParams } from "react-router-dom";
 import { IconArrowLeft, IconCheck } from "@tabler/icons-react";
 import { WithoutSystemFields } from "convex/server";
+import { DateInput } from "@mantine/dates";
+import dayjs from "dayjs";
 
 type FormValues = {
     title: string;
@@ -131,7 +133,7 @@ const CaseCreator = () => {
                 errors["patient.dateOfBirth"] = "Date of birth is required";
             }
 
-            if (!values.encounterDate.trim()) {
+            if (!(values.encounterDate ?? "").trim()) {
                 errors.encounterDate = "Encounter date is required";
             }
 
@@ -324,12 +326,19 @@ const CaseCreator = () => {
                                 searchable
                                 maw={175}
                             />
-                            <TextInput
+                            <DateInput
                                 label="Date of Birth"
-                                type="date"
                                 disabled={isFormDisabled}
                                 {...form.getInputProps("patient.dateOfBirth")}
+                                valueFormat="M/D/YYYY"
+                                placeholder="MM/DD/YYYY"
                                 maw={175}
+                                clearable
+                                firstDayOfWeek={0}
+                                minDate={dayjs()
+                                    .subtract(100, "year")
+                                    .format("YYYY-MM-DD")}
+                                maxDate={dayjs().format("YYYY-MM-DD")}
                             />
                         </Stack>
                     </Stack>
@@ -339,12 +348,21 @@ const CaseCreator = () => {
                     <Stack>
                         <Title order={5}>Encounter Information</Title>
                         <Stack>
-                            <TextInput
+                            <DateInput
                                 label="Encounter Date"
-                                type="date"
                                 disabled={isFormDisabled}
                                 {...form.getInputProps("encounterDate")}
+                                valueFormat="M/D/YYYY"
+                                placeholder="MM/DD/YYYY"
                                 maw={175}
+                                clearable
+                                firstDayOfWeek={0}
+                                minDate={dayjs()
+                                    .subtract(100, "year")
+                                    .format("YYYY-MM-DD")}
+                                maxDate={dayjs()
+                                    .add(100, "year")
+                                    .format("YYYY-MM-DD")}
                             />
                             <Textarea
                                 label="Chief Complaint"
