@@ -90,10 +90,10 @@ const CaseCreator = () => {
     const { id } = useParams<{ id?: string }>();
     const isEditMode = !!id;
     const [isLoading, setIsLoading] = useState(false);
-    const [sendToMedplum, setSendToMedplum] = useState(false);
+    const [sendToEmr, setSendToEmr] = useState(false);
     const createCase = useMutation(api.cases.createCase);
     const updateCase = useMutation(api.cases.updateCase);
-    const sendToMedplumAction = useAction(api.fhir.sendToMedplum);
+    const sendToEmrAction = useAction(api.fhir.sendCaseToEmrThroughPhenoML);
     const caseData: Doc<"cases"> | null | undefined = useQuery(
         api.cases.getCase,
         {
@@ -160,15 +160,15 @@ const CaseCreator = () => {
                 caseId = await createCase(payload);
             }
 
-            // Send to Medplum if checkbox is checked
-            if (sendToMedplum) {
+            // Send to the EMR if checkbox is checked
+            if (sendToEmr) {
                 try {
                     // Convert encounter date to ISO string
                     const encounterDateISO = form.values.encounterDate
                         ? new Date(form.values.encounterDate).toISOString()
                         : new Date().toISOString();
 
-                    const fhirResult = await sendToMedplumAction({
+                    const fhirResult = await sendToEmrAction({
                         caseId,
                         patient: {
                             name: form.values.patient.name,
@@ -195,7 +195,7 @@ const CaseCreator = () => {
                                 <Text>
                                     Case "{title}" successfully{" "}
                                     {isEditMode ? "updated" : "created"} and
-                                    sent to Medplum.
+                                    sent to EMR.
                                 </Text>
                             ),
                             title: "Success",
@@ -208,7 +208,7 @@ const CaseCreator = () => {
                             message: (
                                 <Text>
                                     Case "{title}" saved, but failed to send to
-                                    Medplum: {fhirResult.message}
+                                    EMR: {fhirResult.message}
                                 </Text>
                             ),
                             title: "Warning",
@@ -217,12 +217,11 @@ const CaseCreator = () => {
                         });
                     }
                 } catch (error) {
-                    console.error("Error sending to Medplum:", error);
+                    console.error("Error sending to EMR:", error);
                     notifications.show({
                         message: (
                             <Text>
-                                Case "{title}" saved, but error sending to
-                                Medplum:{" "}
+                                Case "{title}" saved, but error sending to EMR:{" "}
                                 {error instanceof Error
                                     ? error.message
                                     : "Unknown error"}
@@ -315,7 +314,6 @@ const CaseCreator = () => {
                         />
                         <TextInput
                             label="Date of Birth"
-                            placeholder="MM/DD/YYYY"
                             disabled={isFormDisabled}
                             {...form.getInputProps("patient.dateOfBirth")}
                         />
@@ -374,13 +372,11 @@ const CaseCreator = () => {
                     />
 
                     <Checkbox
-                        label="Send to Medplum via PhenoML"
-                        checked={sendToMedplum}
-                        onChange={(e) =>
-                            setSendToMedplum(e.currentTarget.checked)
-                        }
+                        label="Create in EMR"
+                        checked={sendToEmr}
+                        onChange={(e) => setSendToEmr(e.currentTarget.checked)}
                         disabled={isFormDisabled}
-                        description="Convert case data to FHIR and send to Medplum automatically"
+                        description={`If checked, the ${isEditMode ? "Update" : "Create"} case button will also create a copy of the case in the EMR`}
                     />
 
                     <Group>

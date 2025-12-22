@@ -5,7 +5,7 @@ import { internal } from "./_generated/api";
 import { Doc } from "./_generated/dataModel";
 import { WithoutSystemFields } from "convex/server";
 
-export const sendToMedplum = action({
+export const sendCaseToEmrThroughPhenoML = action({
     args: {
         caseId: v.id("cases"),
         patient: v.object({
@@ -189,7 +189,7 @@ export const sendToMedplum = action({
 
         return {
             success: true,
-            message: "Successfully sent case to Medplum",
+            message: "Successfully sent case to EMR",
         };
     },
 });
