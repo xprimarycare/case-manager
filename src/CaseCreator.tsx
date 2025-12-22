@@ -288,6 +288,7 @@ const CaseCreator = () => {
                         placeholder="Enter case title"
                         disabled={isFormDisabled}
                         {...form.getInputProps("title")}
+                        maw={600}
                     />
 
                     <Divider />
@@ -300,6 +301,7 @@ const CaseCreator = () => {
                                 placeholder="Enter patient name"
                                 disabled={isFormDisabled}
                                 {...form.getInputProps("patient.name")}
+                                maw={300}
                             />
                             <Select
                                 label="Gender"
@@ -314,12 +316,14 @@ const CaseCreator = () => {
                                 {...form.getInputProps("patient.gender")}
                                 clearable
                                 searchable
+                                maw={175}
                             />
                             <TextInput
                                 label="Date of Birth"
                                 type="date"
                                 disabled={isFormDisabled}
                                 {...form.getInputProps("patient.dateOfBirth")}
+                                maw={175}
                             />
                         </Stack>
                     </Stack>
@@ -334,6 +338,7 @@ const CaseCreator = () => {
                                 type="date"
                                 disabled={isFormDisabled}
                                 {...form.getInputProps("encounterDate")}
+                                maw={175}
                             />
                             <Textarea
                                 label="Chief Complaint"
@@ -342,6 +347,7 @@ const CaseCreator = () => {
                                 autosize
                                 disabled={isFormDisabled}
                                 {...form.getInputProps("chiefComplaint")}
+                                maw={500}
                             />
                             <Textarea
                                 label="History of Present Illness (HPI)"
@@ -350,6 +356,7 @@ const CaseCreator = () => {
                                 autosize
                                 disabled={isFormDisabled}
                                 {...form.getInputProps("hpi")}
+                                maw={500}
                             />
                             <Textarea
                                 label="Allergies"
@@ -358,6 +365,7 @@ const CaseCreator = () => {
                                 autosize
                                 disabled={isFormDisabled}
                                 {...form.getInputProps("allergies")}
+                                maw={500}
                             />
                             <Textarea
                                 label="Medications"
@@ -366,6 +374,7 @@ const CaseCreator = () => {
                                 autosize
                                 disabled={isFormDisabled}
                                 {...form.getInputProps("medications")}
+                                maw={500}
                             />
                             <Textarea
                                 label="Conditions"
@@ -374,6 +383,7 @@ const CaseCreator = () => {
                                 autosize
                                 disabled={isFormDisabled}
                                 {...form.getInputProps("conditions")}
+                                maw={500}
                             />
                         </Stack>
                     </Stack>
