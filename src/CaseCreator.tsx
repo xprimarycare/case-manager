@@ -143,10 +143,14 @@ const CaseCreator = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (form.validate().hasErrors) {
+        setIsLoading(true);
+        const formValidateResult = form.validate();
+        if (formValidateResult.hasErrors) {
+            const firstErrorPath = Object.keys(formValidateResult.errors)[0];
+            form.getInputNode(firstErrorPath)?.focus();
+            setIsLoading(false);
             return;
         }
-        setIsLoading(true);
         try {
             const title = form.values.title;
             const payload = buildCasePayload(form.values);
