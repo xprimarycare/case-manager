@@ -314,6 +314,7 @@ const CaseCreator = () => {
                         />
                         <TextInput
                             label="Date of Birth"
+                            type="date"
                             disabled={isFormDisabled}
                             {...form.getInputProps("patient.dateOfBirth")}
                         />
