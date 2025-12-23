@@ -8,11 +8,11 @@ export default defineSchema({
         updatedAt: v.number(),
         patient: v.object({
             name: v.string(),
-            gender: v.optional(v.string()),
-            dateOfBirth: v.optional(v.string()),
+            gender: v.string(),
+            dateOfBirth: v.string(),
         }),
         encounter: v.object({
-            date: v.optional(v.string()),
+            date: v.string(),
         }),
         chiefComplaint: v.optional(v.string()),
         hpi: v.optional(v.string()),

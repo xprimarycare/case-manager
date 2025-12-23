@@ -1,5 +1,6 @@
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
+import "@mantine/dates/styles.css";
 import { MantineProvider, Stack } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { Notifications } from "@mantine/notifications";
@@ -14,7 +15,7 @@ const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 export default function App() {
     return (
         <ConvexProvider client={convex}>
-            <MantineProvider theme={theme}>
+            <MantineProvider theme={theme} defaultColorScheme="auto">
                 <Notifications autoClose={5000} />
                 <ModalsProvider>
                     <BrowserRouter>
